@@ -4,15 +4,12 @@ using UnityEngine;
 
 public class KnockDownEnemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private void OnTriggerEnter(Collider other)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log(other.name);
+        if (other.GetComponent<EnemyAI>() != null)
+        {
+            other.GetComponent<EnemyAI>().KnockedDown();
+        }
     }
 }

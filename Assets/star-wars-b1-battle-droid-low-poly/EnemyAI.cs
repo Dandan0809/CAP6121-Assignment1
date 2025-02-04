@@ -63,6 +63,7 @@ public class EnemyAI : MonoBehaviour
     {
         currentState = EnemyState.Knocked;
         agent.ResetPath();
+        animator.SetTrigger("Knocked");
     }
 
     private void Move()
