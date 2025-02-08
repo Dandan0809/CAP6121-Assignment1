@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - Beam
+  - Interactable
   layers:
   - Default
   - TransparentFX
