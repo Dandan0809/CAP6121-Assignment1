@@ -435,6 +435,37 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!1 &319937449
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 319937450}
+  m_Layer: 0
+  m_Name: Bullet Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &319937450
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 319937449}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.5, y: -0.5, z: -0.5, w: 0.5}
+  m_LocalPosition: {x: -0.0507, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 937986664956951639}
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: -90}
 --- !u!1 &325151325
 GameObject:
   m_ObjectHideFlags: 0
@@ -1841,6 +1872,9 @@ MonoBehaviour:
   player: {fileID: 0}
   health: 0
   currentState: 0
+  bulletPrefab: {fileID: 7165723929768028676, guid: 7b23d7d71d47bed4a985af0b3f855646,
+    type: 3}
+  bulletSpawnPos: {fileID: 319937450}
 --- !u!65 &919132148033604057
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1874,7 +1908,8 @@ Transform:
   m_LocalPosition: {x: -0.0031744738, y: 0.0150065385, z: -0.0086382}
   m_LocalScale: {x: 0.5, y: 0.49999982, z: 0.50000006}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 319937450}
   m_Father: {fileID: 2826068770701501024}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1035188570577786536

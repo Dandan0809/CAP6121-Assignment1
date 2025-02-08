@@ -22,6 +22,9 @@ public class EnemyAI : MonoBehaviour
     public float health;
     public EnemyState currentState; // The current state of the enemy
 
+    public GameObject bulletPrefab;
+    public Transform bulletSpawnPos;
+
     private void Awake()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -101,4 +104,17 @@ public class EnemyAI : MonoBehaviour
             currentState = EnemyState.Aiming;
         }
     }
+
+    public void SpawnShot()
+    {
+        // Calculate direction from spawn position to target
+        Vector3 direction = (player.position - bulletSpawnPos.position);
+
+        // Create a rotation that looks in that direction
+        Quaternion rotation = Quaternion.LookRotation(direction);
+
+        // Instantiate the object with the calculated rotation
+        Instantiate(bulletPrefab, bulletSpawnPos.position, rotation);
+    }
+
 }
