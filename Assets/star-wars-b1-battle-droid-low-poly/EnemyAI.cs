@@ -36,8 +36,14 @@ public class EnemyAI : MonoBehaviour
     public float moveRadius = 10f;
     public float turnSpeed;
 
+    private WaveManager waveManager;
+
     private void Awake()
     {
+        if (mode == AIMode.Attack)
+        {
+            waveManager = FindAnyObjectByType<WaveManager>();
+        }
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         player = Camera.main.transform;
@@ -178,5 +184,13 @@ public class EnemyAI : MonoBehaviour
         transform.rotation = targetRotation;
         animator.SetTrigger("Shoot");
         currentState = EnemyState.Shooting;
+    }
+
+    private void OnDestroy()
+    {
+        if (waveManager != null)
+        {
+            waveManager.DecreaseEnemyCount();
+        }
     }
 }
