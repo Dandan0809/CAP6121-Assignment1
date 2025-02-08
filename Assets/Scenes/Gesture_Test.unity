@@ -2401,6 +2401,9 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7165723929768028676, guid: 7b23d7d71d47bed4a985af0b3f855646,
     type: 3}
   bulletSpawnPos: {fileID: 319937450}
+  mode: 0
+  moveRadius: 10
+  turnSpeed: 2
 --- !u!65 &919132148033604057
 BoxCollider:
   m_ObjectHideFlags: 0

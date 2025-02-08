@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class EnemyAI : MonoBehaviour
+public class EnemyTrainingAI : MonoBehaviour
 {
     public enum EnemyState
     {
@@ -15,12 +15,6 @@ public class EnemyAI : MonoBehaviour
         Idle
     }
 
-    public enum AIMode
-    {
-        Training,
-        Attack
-    }
-
     [SerializeField] private NavMeshAgent agent;
     [SerializeField] private Animator animator;
 
@@ -30,11 +24,6 @@ public class EnemyAI : MonoBehaviour
 
     public GameObject bulletPrefab;
     public Transform bulletSpawnPos;
-
-    [Header("Training Mode Settings")]
-    public AIMode mode = AIMode.Attack; // The type of AI the enemy is using.
-    public float moveRadius = 10f;
-    public float turnSpeed;
 
     private void Awake()
     {
@@ -51,7 +40,7 @@ public class EnemyAI : MonoBehaviour
 
     // Enemy starts by moving to a destination.
     // If enemy reaches destination -> proceed to shoot, log a shot.
-        // At the end of the animation, transition to has shot.
+    // At the end of the animation, transition to has shot.
     // If enemy has shot, pick a new destination to walk to.
     // If the enemy is knocked down, do not allow it to do anything.
     // Once the enemy has gotten back up set the state to moving and pick a new destination.
@@ -69,15 +58,8 @@ public class EnemyAI : MonoBehaviour
 
     private void Attack()
     {
-        if (mode == AIMode.Training)
-        {
-            StartCoroutine(RotateToFaceTarget());
-        }
-        else
-        {
-            animator.SetTrigger("Shoot");
-            currentState = EnemyState.Shooting;
-        }
+        animator.SetTrigger("Shoot");
+        currentState = EnemyState.Shooting;
     }
 
     public void KnockedDown()
@@ -89,21 +71,13 @@ public class EnemyAI : MonoBehaviour
 
     private void Move()
     {
-        Vector3 nextDestination;
-        if (mode == AIMode.Attack)
-        {
-            nextDestination = GetRandomPointBetween();
-            if (Vector3.Distance(transform.position, nextDestination) < 2f)
-            {
-                StartCoroutine(WaitToShoot());
-                return;
-            }
-        }
-        else
-        {
-            GetRandomPointOnNavMesh(out nextDestination);
-        }
+        Vector3 nextDestination = GetRandomPointBetween();
         nextDestination.y = 0;
+        if (Vector3.Distance(transform.position, nextDestination) < 2f)
+        {
+            StartCoroutine(WaitToShoot());
+            return;
+        }
         agent.SetDestination(nextDestination);
         currentState = EnemyState.Moving;
         animator.SetTrigger("Walk");
@@ -143,40 +117,4 @@ public class EnemyAI : MonoBehaviour
         Instantiate(bulletPrefab, bulletSpawnPos.position, rotation);
     }
 
-    // Training Mode functions.
-
-    private bool GetRandomPointOnNavMesh(out Vector3 result)
-    {
-        for (int i = 0; i < 30; i++) // Try multiple times to find a valid point
-        {
-            Vector3 randomDirection = Random.insideUnitSphere * moveRadius;
-            randomDirection += transform.position;
-            randomDirection.y = 0;
-            NavMeshHit hit;
-            if (NavMesh.SamplePosition(randomDirection, out hit, 1f, NavMesh.AllAreas))
-            {
-                result = hit.position;
-                return true;
-            }
-        }
-        result = transform.position;
-        return false;
-    }
-
-    private IEnumerator RotateToFaceTarget()
-    {
-        Vector3 direction = (player.position - transform.position).normalized;
-        direction.y = 0; // Keep rotation horizontal
-
-        Quaternion targetRotation = Quaternion.LookRotation(direction);
-
-        while (Quaternion.Angle(transform.rotation, targetRotation) > 0.1f)
-        {
-            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * turnSpeed);
-            yield return null; // Wait for next frame
-        }
-        transform.rotation = targetRotation;
-        animator.SetTrigger("Shoot");
-        currentState = EnemyState.Shooting;
-    }
 }
