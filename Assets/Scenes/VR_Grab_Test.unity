@@ -5488,7 +5488,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_HandTrackingEvents: {fileID: 173954911}
-  m_HandShapeOrPose: {fileID: 11400000, guid: 4dbdc1c1771a7724ea76e33362cf001e, type: 2}
+  m_HandShapeOrPose: {fileID: 11400000, guid: 35394f0d267fdb747849c87ec5d1b86e, type: 2}
   m_TargetTransform: {fileID: 0}
   m_Background: {fileID: 69932834}
   m_GesturePerformed:
@@ -5504,7 +5504,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
   m_GestureEnded:
     m_PersistentCalls:
@@ -5604,8 +5604,8 @@ MonoBehaviour:
   m_Camera: {fileID: 1095144624}
   m_OriginBaseGameObject: {fileID: 1777029730}
   m_CameraFloorOffsetObject: {fileID: 370796893}
-  m_RequestedTrackingOriginMode: 1
-  m_CameraYOffset: 0.3
+  m_RequestedTrackingOriginMode: 0
+  m_CameraYOffset: 1.1176
 --- !u!4 &1777029734
 Transform:
   m_ObjectHideFlags: 0
