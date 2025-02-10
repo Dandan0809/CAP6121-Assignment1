@@ -8,6 +8,7 @@ public class DualWield : MonoBehaviour
     public MeshRenderer secondSaber;
     public Collider saberCollider;
     public GameObject[] abilities;
+    public PlayerHealth player;
 
     public void UnleashForce()
     {
@@ -16,6 +17,16 @@ public class DualWield : MonoBehaviour
         foreach (GameObject obj in abilities)
         {
             obj.SetActive(false);
+        }
+        StartCoroutine(Regenerate());
+    }
+
+    IEnumerator Regenerate()
+    {
+        while (true)
+        {
+            player.CastHeal();
+            yield return new WaitForSeconds(8f);
         }
     }
 }

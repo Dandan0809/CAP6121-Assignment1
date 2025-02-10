@@ -11,6 +11,7 @@ public class PlayerHealth : MonoBehaviour
 
     public Image healthBar;
     public ParticleSystem healFX;
+    public AudioSource healSound;
 
     public void CastHeal()
     {
@@ -21,6 +22,7 @@ public class PlayerHealth : MonoBehaviour
         }
         healthBar.fillAmount = currentHealthPoints / maxHealthPoints;
         healFX.Play();
+        healSound.Play();
     }
 
     public void TakeDamage(float damage)

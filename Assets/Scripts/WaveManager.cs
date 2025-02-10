@@ -53,7 +53,7 @@ public class WaveManager : MonoBehaviour
     IEnumerator SpawnEnemies()
     {
         waveIncomingText.SetActive(true);
-        waveCountText.GetComponent<TMP_Text>().text = "Wave Count: " + currentWave + 1;
+        waveCountText.GetComponent<TMP_Text>().text = "Wave Count: " + (currentWave + 1);
         waveCountText.SetActive(true);
         yield return new WaitForSeconds(1f);
         waveCountdownText.GetComponent<TMP_Text>().text = "3";
