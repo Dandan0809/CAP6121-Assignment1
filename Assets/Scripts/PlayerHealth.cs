@@ -26,5 +26,9 @@ public class PlayerHealth : MonoBehaviour
     {
         currentHealthPoints -= damage;
         healthBar.fillAmount = currentHealthPoints / maxHealthPoints;
+        if (currentHealthPoints <= 0)
+        {
+            FindAnyObjectByType<WaveManager>().LostGame();
+        }
     }
 }

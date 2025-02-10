@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class LightningDamage : MonoBehaviour
 {
-    public float damage;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.GetComponent<EnemyAI>() != null)
+        if (other.gameObject.GetComponent<EnemyAI>() != null)
         {
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
         }
         Destroy(gameObject);
     }

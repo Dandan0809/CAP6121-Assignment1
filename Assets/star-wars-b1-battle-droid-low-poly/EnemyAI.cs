@@ -140,7 +140,7 @@ public class EnemyAI : MonoBehaviour
     public void SpawnShot()
     {
         // Calculate direction from spawn position to target
-        Vector3 direction = (player.position - bulletSpawnPos.position);
+        Vector3 direction = ((player.position - new Vector3(0, 0.5f, 0)) - bulletSpawnPos.position);
 
         // Create a rotation that looks in that direction
         Quaternion rotation = Quaternion.LookRotation(direction);

@@ -6,15 +6,15 @@ public class BulletDamage : MonoBehaviour
 {
     public float damage;
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.GetComponent<EnemyAI>() != null)
+        if (other.gameObject.GetComponent<EnemyAI>() != null)
         {
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
         }
-        else if (collision.gameObject.GetComponent<PlayerHealth>())
+        else if (other.gameObject.GetComponent<PlayerHealth>())
         {
-            collision.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
+            other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
         }
         Destroy(gameObject);
     }
