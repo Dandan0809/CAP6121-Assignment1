@@ -2,15 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LightningDamage : MonoBehaviour
+public class SaberAttack : MonoBehaviour
 {
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<EnemyAI>() != null)
+        if (other.GetComponent<EnemyAI>() != null)
         {
             Destroy(other.gameObject);
-            Destroy(gameObject);
         }
     }
 }

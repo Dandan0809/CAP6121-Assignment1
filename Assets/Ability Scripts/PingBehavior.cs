@@ -27,12 +27,11 @@ public class PingBehavior : MonoBehaviour
         while (Time.time - startTime < 5f) // Loop until 5 seconds have passed
         {
             line.SetPosition(1, new Vector3(enemy.transform.position.x, enemy.transform.position.y, enemy.transform.position.z));
-            if (enemy.pathEndPosition == enemy.transform.position)
+            if (enemy.pathEndPosition == enemy.transform.position || enemy == null)
             {
                 Destroy(gameObject);
             }
             float Distance = Vector3.Distance(enemy.transform.position, transform.position);
-            float TimeBetweenObjects = Distance / enemy.velocity.magnitude;
             yield return null; // Wait for the next frame
         }
         Destroy(gameObject);

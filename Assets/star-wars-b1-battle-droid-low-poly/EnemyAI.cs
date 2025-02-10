@@ -38,8 +38,11 @@ public class EnemyAI : MonoBehaviour
 
     private WaveManager waveManager;
 
+    public AudioSource audioS;
+
     private void Awake()
     {
+        audioS = GetComponent<AudioSource>();
         if (mode == AIMode.Attack)
         {
             waveManager = FindAnyObjectByType<WaveManager>();

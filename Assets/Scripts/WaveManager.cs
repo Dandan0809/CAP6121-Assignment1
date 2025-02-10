@@ -19,6 +19,7 @@ public class WaveManager : MonoBehaviour
     public GameObject waveIncomingText;
     public GameObject waveCountText;
     public GameObject waveCountdownText;
+    public AudioSource audioS;
 
     private void Start()
     {
@@ -32,6 +33,7 @@ public class WaveManager : MonoBehaviour
     public void DecreaseEnemyCount()
     {
         currentEnemiesLeftCount--;
+        audioS.Play();
         if (currentEnemiesLeftCount == 0)
         {
             currentWave++;
