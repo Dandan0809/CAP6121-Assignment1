@@ -99,7 +99,7 @@ public class EnemyAI : MonoBehaviour
         if (mode == AIMode.Attack)
         {
             nextDestination = GetRandomPointBetween();
-            if (Vector3.Distance(transform.position, nextDestination) < 2f)
+            if (Vector3.Distance(transform.position, nextDestination) < 0.5f)
             {
                 StartCoroutine(WaitToShoot());
                 return;

@@ -9,6 +9,7 @@ public class PlayerHealth : MonoBehaviour
     public float currentHealthPoints = 100f;
 
     public Image healthBar;
+    public ParticleSystem healFX;
 
     public void CastHeal()
     {
@@ -18,6 +19,7 @@ public class PlayerHealth : MonoBehaviour
             currentHealthPoints = maxHealthPoints;
         }
         healthBar.fillAmount = currentHealthPoints / maxHealthPoints;
+        healFX.Play();
     }
 
     public void TakeDamage(float damage)
