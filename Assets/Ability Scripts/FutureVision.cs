@@ -7,11 +7,6 @@ public class FutureVision : MonoBehaviour
 {
     public GameObject locationPing;
 
-    private void Start()
-    {
-        SeeEnemyPositions();
-    }
-
     public void SeeEnemyPositions()
     {
         NavMeshAgent[] enemies = FindObjectsByType<NavMeshAgent>(FindObjectsSortMode.None);

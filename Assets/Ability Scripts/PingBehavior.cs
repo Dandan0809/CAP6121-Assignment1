@@ -33,7 +33,6 @@ public class PingBehavior : MonoBehaviour
             }
             float Distance = Vector3.Distance(enemy.transform.position, transform.position);
             float TimeBetweenObjects = Distance / enemy.velocity.magnitude;
-            Debug.Log(TimeBetweenObjects + " Speed: " + enemy.velocity.magnitude);
             yield return null; // Wait for the next frame
         }
         Destroy(gameObject);
