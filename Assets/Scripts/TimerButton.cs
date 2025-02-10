@@ -1,43 +1,47 @@
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro; // Import TextMeshPro namespace
+using TMPro;
 
 public class TimerButton : MonoBehaviour
 {
-    public GameObject targetObject; // The GameObject to activate
-    public Canvas targetCanvas; // The Canvas to deactivate
-    public float timerDuration = 10; // Set timer duration (optional)
-    public TextMeshProUGUI timerText; // Assign a TMP text UI element
+    public GameObject lightSaber; 
+    public Canvas targetCanvas;  
+    public float timerDuration = 10;  
+    public TextMeshProUGUI timerText;  
 
     private float timer = 0;
     private bool isTimerRunning = false;
 
     void Start()
     {
-        // Ensure the target object is inactive at the start
-        if (targetObject != null)
-            targetObject.SetActive(false);
+        if (lightSaber != null)
+            lightSaber.SetActive(false);
 
-        // Initialize Timer Text Display
         if (timerText != null)
+        {
+            timerText.gameObject.SetActive(false);
             timerText.text = timerDuration.ToString("F2") + "s";
+        }
+
+        if (targetCanvas != null)
+            targetCanvas.gameObject.SetActive(true);
     }
 
     public void OnButtonClick()
     {
-        // Activate the target object
-        if (targetObject != null)
-            targetObject.SetActive(true);
+        if (lightSaber != null)
+            lightSaber.SetActive(true);
 
-        // Deactivate the target canvas
         if (targetCanvas != null)
             targetCanvas.gameObject.SetActive(false);
 
-        // Start the timer
+        if (timerText != null)
+            timerText.gameObject.SetActive(true);
+
         timer = timerDuration;
         isTimerRunning = true;
 
-        Debug.Log("Button clicked: Object Activated, Canvas Deactivated, Timer Started!");
+        //Debug.Log("Button clicked: Object Activated, Canvas Deactivated, Timer Started!");
     }
 
     void Update()
@@ -46,13 +50,31 @@ public class TimerButton : MonoBehaviour
         {
             timer -= Time.deltaTime;
 
-            // Ensure Timer Never Goes Below Zero
-            if (timer < 0) timer = 0;
+            if (timer < 0)
+                timer = 0;
 
-            // Update TextMeshPro UI Timer
             if (timerText != null)
-                timerText.text = timer.ToString("F2") + "s"; // Show two decimal places
+                timerText.text = timer.ToString("F2") + "s";
+
+            if (timer <= 0)
+            {
+                isTimerRunning = false;
+                TimerEnded();
+            }
         }
     }
+
+    void TimerEnded()
+    {
+        //Debug.Log("Timer finished!");
+
+        if (targetCanvas != null)
+            targetCanvas.gameObject.SetActive(true);
+
+        if (lightSaber != null)
+            lightSaber.SetActive(false);
+
+        if (timerText != null)
+            timerText.gameObject.SetActive(false);
+    }
 }
-            // Stop Timer When It Reaches

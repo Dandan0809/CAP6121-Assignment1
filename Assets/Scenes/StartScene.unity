@@ -2631,42 +2631,42 @@ PrefabInstance:
     - target: {fileID: 5876909491052011584, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.20000076
+      value: -0.2
       objectReference: {fileID: 0}
     - target: {fileID: 5876909491052011584, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.04587603
+      value: 0.8660254
       objectReference: {fileID: 0}
     - target: {fileID: 5876909491052011584, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.08015747
+      value: -0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5876909491052011584, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.0037617902
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5876909491052011584, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.9957189
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5876909491052011584, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0.008
+      value: -60
       objectReference: {fileID: 0}
     - target: {fileID: 5876909491052011584, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 9.205
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5876909491052011584, guid: b3ed8a0a703ebd34a9e44ed3d9f1fcf6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 185.276
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3178,8 +3178,8 @@ MonoBehaviour:
   m_Camera: {fileID: 991479029}
   m_OriginBaseGameObject: {fileID: 1450839660}
   m_CameraFloorOffsetObject: {fileID: 664250508}
-  m_RequestedTrackingOriginMode: 1
-  m_CameraYOffset: -0.3
+  m_RequestedTrackingOriginMode: 0
+  m_CameraYOffset: 1.1176
 --- !u!4 &1450839663
 Transform:
   m_ObjectHideFlags: 0
@@ -3189,7 +3189,7 @@ Transform:
   m_GameObject: {fileID: 1450839660}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.79, y: 0, z: 17.18}
+  m_LocalPosition: {x: -22, y: -0.5, z: 17.329}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5576,8 +5576,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 371422152}
   - {fileID: 329417675}
-  - {fileID: 1055560785}
   - {fileID: 1818530596}
   - {fileID: 559007960}
   - {fileID: 1450839663}
   - {fileID: 1961626878}
+  - {fileID: 1055560785}
