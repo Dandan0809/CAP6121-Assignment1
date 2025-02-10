@@ -4,10 +4,13 @@ using TMPro;
 
 public class TimerButton : MonoBehaviour
 {
-    public GameObject lightSaber; 
-    public Canvas targetCanvas;  
-    public float timerDuration = 10;  
-    public TextMeshProUGUI timerText;  
+    public GameObject lightSaber;
+    public Canvas timerCanvas;
+    public float timerDuration = 10;
+    public TextMeshProUGUI timerText;
+    public GameObject droid;
+    public Canvas resultCanvas;
+    public SaberDeflect saberDeflect; // Reference to SaberDeflect script
 
     private float timer = 0;
     private bool isTimerRunning = false;
@@ -23,8 +26,14 @@ public class TimerButton : MonoBehaviour
             timerText.text = timerDuration.ToString("F2") + "s";
         }
 
-        if (targetCanvas != null)
-            targetCanvas.gameObject.SetActive(true);
+        if (timerCanvas != null)
+            timerCanvas.gameObject.SetActive(false);
+
+        if (droid != null)
+            droid.SetActive(false);
+
+        if (resultCanvas != null)
+            resultCanvas.gameObject.SetActive(false);
     }
 
     public void OnButtonClick()
@@ -32,16 +41,23 @@ public class TimerButton : MonoBehaviour
         if (lightSaber != null)
             lightSaber.SetActive(true);
 
-        if (targetCanvas != null)
-            targetCanvas.gameObject.SetActive(false);
+        if (timerCanvas != null)
+            timerCanvas.gameObject.SetActive(true);
 
         if (timerText != null)
             timerText.gameObject.SetActive(true);
 
+        if (droid != null)
+            droid.SetActive(true);
+
+        if (saberDeflect != null)
+        {
+            saberDeflect.deflectCount = 0;
+            saberDeflect.UpdateDeflectUI();
+        }
+
         timer = timerDuration;
         isTimerRunning = true;
-
-        //Debug.Log("Button clicked: Object Activated, Canvas Deactivated, Timer Started!");
     }
 
     void Update()
@@ -66,15 +82,19 @@ public class TimerButton : MonoBehaviour
 
     void TimerEnded()
     {
-        //Debug.Log("Timer finished!");
-
-        if (targetCanvas != null)
-            targetCanvas.gameObject.SetActive(true);
+        if (timerCanvas != null)
+            timerCanvas.gameObject.SetActive(false);
 
         if (lightSaber != null)
             lightSaber.SetActive(false);
 
         if (timerText != null)
             timerText.gameObject.SetActive(false);
+
+        if (droid != null)
+            droid.SetActive(false);
+
+        if (resultCanvas != null)
+            resultCanvas.gameObject.SetActive(true);
     }
 }
