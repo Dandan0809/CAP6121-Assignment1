@@ -31,6 +31,9 @@ public class EnemyAI : MonoBehaviour
     public GameObject bulletPrefab;
     public Transform bulletSpawnPos;
 
+    public float minDistanceBetweenShots;
+    public float maxDistanceBetweenShots;
+
     [Header("Training Mode Settings")]
     public AIMode mode = AIMode.Attack; // The type of AI the enemy is using.
     public float moveRadius = 10f;
@@ -39,6 +42,7 @@ public class EnemyAI : MonoBehaviour
     private WaveManager waveManager;
 
     public AudioSource audioS;
+
 
     private void Awake()
     {
@@ -120,7 +124,7 @@ public class EnemyAI : MonoBehaviour
 
     private Vector3 GetRandomPointBetween()
     {
-        float randomT = Random.Range(0.2f, 0.4f);
+        float randomT = Random.Range(minDistanceBetweenShots, maxDistanceBetweenShots);
         return Vector3.Lerp(transform.position, player.position, randomT);
     }
 

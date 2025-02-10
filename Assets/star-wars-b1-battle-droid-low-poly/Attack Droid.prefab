@@ -611,11 +611,12 @@ MonoBehaviour:
   bulletPrefab: {fileID: 7165723929768028676, guid: def57f9f74aa2024992612057849c239,
     type: 3}
   bulletSpawnPos: {fileID: 173211236703359726}
+  minDistanceBetweenShots: 0.3
+  maxDistanceBetweenShots: 0.5
   mode: 1
   moveRadius: 10
   turnSpeed: 2
-  audio: {fileID: 0}
-  deathSound: {fileID: 8300000, guid: d956f3dc95b8f8b45896e4ad4cc97da7, type: 3}
+  audioS: {fileID: 0}
 --- !u!65 &7302089950837200904
 BoxCollider:
   m_ObjectHideFlags: 0

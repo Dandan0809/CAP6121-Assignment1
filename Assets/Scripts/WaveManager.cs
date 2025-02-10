@@ -21,6 +21,9 @@ public class WaveManager : MonoBehaviour
     public GameObject waveCountdownText;
     public AudioSource audioS;
 
+    public GameObject ForceAbility;
+    public GameObject bossPrefab;
+
     private void Start()
     {
         StartWave();
@@ -42,6 +45,10 @@ public class WaveManager : MonoBehaviour
                 waveIncomingText.GetComponent<TMP_Text>().text = "Victory!";
                 waveIncomingText.SetActive(true);
                 StartCoroutine(EndGame());
+            }
+            else if (currentWave == enemyWaves.Length)  // Boss Round
+            {
+                StartCoroutine(BossSpawn());
             }
             else
             {
@@ -76,6 +83,31 @@ public class WaveManager : MonoBehaviour
             Instantiate(enemyPrefab, Vector3.Lerp(point1.position, point2.position, t), Quaternion.identity);
             yield return new WaitForSeconds(5f);
         }
+    }
+
+    IEnumerator BossSpawn()
+    {
+        waveIncomingText.SetActive(true);
+        waveCountText.GetComponent<TMP_Text>().text = "Final Wave";
+        waveCountText.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        waveCountdownText.GetComponent<TMP_Text>().text = "3";
+        waveCountdownText.SetActive(true);
+        yield return new WaitForSeconds(1f);
+        waveCountdownText.GetComponent<TMP_Text>().text = "2";
+        yield return new WaitForSeconds(1f);
+        waveCountdownText.GetComponent<TMP_Text>().text = "1";
+        yield return new WaitForSeconds(1f);
+        waveCountdownText.GetComponent<TMP_Text>().text = "Start!";
+        yield return new WaitForSeconds(1f);
+        waveCountdownText.SetActive(false);
+        waveCountText.SetActive(false);
+        waveIncomingText.SetActive(false);
+        currentEnemiesLeftCount = enemyWaves[currentWave];
+
+        float t = Random.Range(0f, 1f); // Random value between 0 and 1
+        Instantiate(bossPrefab, Vector3.Lerp(point1.position, point2.position, t), Quaternion.identity);
+
     }
 
     IEnumerator EndGame()
