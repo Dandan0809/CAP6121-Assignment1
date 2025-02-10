@@ -24,10 +24,13 @@ public class WaveManager : MonoBehaviour
     public GameObject ForceAbility;
     public GameObject bossPrefab;
 
+    public bool hasFoughtBoss = false;
+
     private void Start()
     {
         StartWave();
     }
+
     public void StartWave()
     {
         StartCoroutine(SpawnEnemies());
@@ -35,6 +38,14 @@ public class WaveManager : MonoBehaviour
 
     public void DecreaseEnemyCount()
     {
+        if (hasFoughtBoss)
+        {
+            waveIncomingText.GetComponent<TMP_Text>().text = "Victory!";
+            waveIncomingText.SetActive(true);
+            StartCoroutine(EndGame());
+            return;
+        }
+
         currentEnemiesLeftCount--;
         audioS.Play();
         if (currentEnemiesLeftCount == 0)
@@ -42,13 +53,10 @@ public class WaveManager : MonoBehaviour
             currentWave++;
             if (currentWave >= enemyWaves.Length)
             {
-                waveIncomingText.GetComponent<TMP_Text>().text = "Victory!";
-                waveIncomingText.SetActive(true);
-                StartCoroutine(EndGame());
-            }
-            else if (currentWave == enemyWaves.Length)  // Boss Round
-            {
+                Debug.Log("HERE");
                 StartCoroutine(BossSpawn());
+                hasFoughtBoss = true;
+                return;
             }
             else
             {
@@ -77,7 +85,8 @@ public class WaveManager : MonoBehaviour
         waveIncomingText.SetActive(false);
 
         currentEnemiesLeftCount = enemyWaves[currentWave];
-        for (int i = 0; i < enemyWaves[currentWave]; i++)
+        float k = enemyWaves[currentWave];
+        for (int i = 0; i < k; i++)
         {
             float t = Random.Range(0f, 1f); // Random value between 0 and 1
             Instantiate(enemyPrefab, Vector3.Lerp(point1.position, point2.position, t), Quaternion.identity);
@@ -103,7 +112,6 @@ public class WaveManager : MonoBehaviour
         waveCountdownText.SetActive(false);
         waveCountText.SetActive(false);
         waveIncomingText.SetActive(false);
-        currentEnemiesLeftCount = enemyWaves[currentWave];
 
         float t = Random.Range(0f, 1f); // Random value between 0 and 1
         Instantiate(bossPrefab, Vector3.Lerp(point1.position, point2.position, t), Quaternion.identity);
