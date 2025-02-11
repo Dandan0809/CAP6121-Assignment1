@@ -10,7 +10,9 @@ public class TimerButton : MonoBehaviour
     public TextMeshProUGUI timerText;
     public GameObject droid;
     public Canvas resultCanvas;
-    public SaberDeflect saberDeflect; // Reference to SaberDeflect script
+    public SaberDeflect saberDeflect;
+    public Canvas handCanvas;
+
 
     private float timer = 0;
     private bool isTimerRunning = false;
@@ -34,6 +36,10 @@ public class TimerButton : MonoBehaviour
 
         if (resultCanvas != null)
             resultCanvas.gameObject.SetActive(false);
+
+        if (handCanvas != null)
+            handCanvas.gameObject.SetActive(true);
+
     }
 
     public void OnButtonClick()
@@ -55,6 +61,9 @@ public class TimerButton : MonoBehaviour
             saberDeflect.deflectCount = 0;
             saberDeflect.UpdateDeflectUI();
         }
+
+        if (handCanvas != null)
+            handCanvas.gameObject.SetActive(false);
 
         timer = timerDuration;
         isTimerRunning = true;
@@ -96,5 +105,8 @@ public class TimerButton : MonoBehaviour
 
         if (resultCanvas != null)
             resultCanvas.gameObject.SetActive(true);
+
+        if (handCanvas != null)
+            handCanvas.gameObject.SetActive(true);
     }
 }
