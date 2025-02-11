@@ -9,14 +9,15 @@ public class TimerButton : MonoBehaviour
     public Canvas timerCanvas;
     public float timerDuration = 10;
     public TextMeshProUGUI timerText;
-    public GameObject droid;
+    public GameObject droidPrefab; 
+    public Transform spawnPoint; 
     public Canvas resultCanvas;
     public SaberDeflect saberDeflect;
     public Canvas handCanvas;
 
-
     private float timer = 0;
     private bool isTimerRunning = false;
+    private GameObject spawnedDroid; 
 
     void Start()
     {
@@ -32,15 +33,11 @@ public class TimerButton : MonoBehaviour
         if (timerCanvas != null)
             timerCanvas.gameObject.SetActive(false);
 
-        if (droid != null)
-            droid.SetActive(false);
-
         if (resultCanvas != null)
             resultCanvas.gameObject.SetActive(false);
 
         if (handCanvas != null)
             handCanvas.gameObject.SetActive(true);
-
     }
 
     public void OnButtonClick()
@@ -54,10 +51,16 @@ public class TimerButton : MonoBehaviour
         if (timerText != null)
             timerText.gameObject.SetActive(true);
 
-        if (droid != null)
+        if (spawnedDroid != null)
+            Destroy(spawnedDroid);
+
+        if (droidPrefab != null && spawnPoint != null)
         {
-            droid.SetActive(false);
-            droid.SetActive(true);
+            spawnedDroid = Instantiate(droidPrefab, spawnPoint.position, spawnPoint.rotation);
+        }
+        else
+        {
+            Debug.LogError("Droid Prefab or Spawn Point is missing!");
         }
 
         if (saberDeflect != null)
@@ -107,8 +110,11 @@ public class TimerButton : MonoBehaviour
         if (timerText != null)
             timerText.gameObject.SetActive(false);
 
-        if (droid != null)
-            droid.SetActive(false);
+        if (spawnedDroid != null)
+        {
+            Destroy(spawnedDroid);
+            spawnedDroid = null;
+        }
 
         if (resultCanvas != null)
             resultCanvas.gameObject.SetActive(true);
