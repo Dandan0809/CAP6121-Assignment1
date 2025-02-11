@@ -1266,6 +1266,7 @@ MonoBehaviour:
   bulletSpawnPos: {fileID: 2827607888971316323}
   minDistanceBetweenShots: 0.2
   maxDistanceBetweenShots: 0.4
+  isBoss: 1
   mode: 1
   moveRadius: 10
   turnSpeed: 2

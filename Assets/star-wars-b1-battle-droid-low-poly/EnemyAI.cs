@@ -34,6 +34,8 @@ public class EnemyAI : MonoBehaviour
     public float minDistanceBetweenShots;
     public float maxDistanceBetweenShots;
 
+    public bool isBoss = false;
+
     [Header("Training Mode Settings")]
     public AIMode mode = AIMode.Attack; // The type of AI the enemy is using.
     public float moveRadius = 10f;
