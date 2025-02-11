@@ -154,6 +154,8 @@ public class EnemyAI : MonoBehaviour
 
         // Instantiate the object with the calculated rotation
         Instantiate(bulletPrefab, bulletSpawnPos.position, rotation);
+
+        audioS.Play();
     }
 
     // Training Mode functions.

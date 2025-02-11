@@ -39,6 +39,8 @@ public class DroneAttacks : MonoBehaviour
 
         // Instantiate the object with the calculated rotation
         Instantiate(bulletPrefab, bulletSpawnPos.position, rotation);
+        
+        audioS.Play();
     }
 
 
