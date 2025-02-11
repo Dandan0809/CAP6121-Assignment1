@@ -42,9 +42,8 @@ public class EnemyAI : MonoBehaviour
     public float turnSpeed;
 
     private WaveManager waveManager;
-
     public AudioSource audioS;
-
+    public SaberDeflect SaberDeflect;
 
     private void Awake()
     {
@@ -52,6 +51,10 @@ public class EnemyAI : MonoBehaviour
         if (mode == AIMode.Attack)
         {
             waveManager = FindAnyObjectByType<WaveManager>();
+        }
+        else
+        {
+            SaberDeflect = FindAnyObjectByType<SaberDeflect>();
         }
         agent = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
@@ -158,6 +161,8 @@ public class EnemyAI : MonoBehaviour
         Instantiate(bulletPrefab, bulletSpawnPos.position, rotation);
 
         audioS.Play();
+
+        SaberDeflect.shotCount++;
     }
 
     // Training Mode functions.

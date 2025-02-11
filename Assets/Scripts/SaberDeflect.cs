@@ -7,6 +7,7 @@ public class SaberDeflect : MonoBehaviour
     public AudioSource deflectSound; 
     public int deflectCount = 0;
     public TextMeshProUGUI deflectText;
+    public int shotCount = 0;
 
     private void OnTriggerEnter(Collider other)
     {
