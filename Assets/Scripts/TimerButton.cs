@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.AI;
 
 public class TimerButton : MonoBehaviour
 {
@@ -54,13 +55,19 @@ public class TimerButton : MonoBehaviour
             timerText.gameObject.SetActive(true);
 
         if (droid != null)
+        {
+            droid.SetActive(false);
             droid.SetActive(true);
+        }
 
         if (saberDeflect != null)
         {
             saberDeflect.deflectCount = 0;
             saberDeflect.UpdateDeflectUI();
         }
+
+        if (resultCanvas != null)
+            resultCanvas.gameObject.SetActive(false);
 
         if (handCanvas != null)
             handCanvas.gameObject.SetActive(false);
