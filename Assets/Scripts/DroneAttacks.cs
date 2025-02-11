@@ -19,7 +19,7 @@ public class DroneAttacks : MonoBehaviour
 
     private IEnumerator RandomShotTimer()
     {
-        float randomTime = Random.Range(1.5f, 5.5f);
+        float randomTime = Random.Range(4f, 5.5f);
         while (true)
         {
             SpawnShot();
