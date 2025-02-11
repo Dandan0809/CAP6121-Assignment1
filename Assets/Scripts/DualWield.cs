@@ -6,6 +6,7 @@ public class DualWield : MonoBehaviour
 {
 
     public MeshRenderer secondSaber;
+    public MeshRenderer saberBase;
     public Collider saberCollider;
     public GameObject[] abilities;
     public PlayerHealth player;
@@ -13,6 +14,7 @@ public class DualWield : MonoBehaviour
     public void UnleashForce()
     {
         secondSaber.enabled = true;
+        saberBase.enabled = true;
         saberCollider.enabled = true;
         foreach (GameObject obj in abilities)
         {

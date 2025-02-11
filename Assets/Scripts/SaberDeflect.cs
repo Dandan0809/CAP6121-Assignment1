@@ -17,7 +17,7 @@ public class SaberDeflect : MonoBehaviour
             if (bulletRb != null)
             {
                 Vector3 incomingVelocity = bulletRb.velocity;
-                Vector3 deflectDirection = Vector3.Reflect(incomingVelocity, transform.forward);
+                Vector3 deflectDirection = Vector3.Reflect(incomingVelocity, other.transform.forward);
                 bulletRb.velocity = deflectDirection.normalized * deflectForce;
             }
 

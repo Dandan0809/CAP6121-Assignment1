@@ -8,12 +8,7 @@ public class BulletDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.GetComponent<EnemyAI>() != null)
-        {
-            Destroy(other.gameObject);
-            Destroy(gameObject);
-        }
-        else if (other.gameObject.GetComponent<PlayerHealth>())
+        if (other.gameObject.GetComponent<PlayerHealth>())
         {
             other.gameObject.GetComponent<PlayerHealth>().TakeDamage(damage);
             Destroy(gameObject);

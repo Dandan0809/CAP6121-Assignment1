@@ -113,9 +113,9 @@ public class WaveManager : MonoBehaviour
         waveCountText.SetActive(false);
         waveIncomingText.SetActive(false);
 
+        ForceAbility.SetActive(true);
         float t = Random.Range(0f, 1f); // Random value between 0 and 1
         Instantiate(bossPrefab, Vector3.Lerp(point1.position, point2.position, t), Quaternion.identity);
-
     }
 
     IEnumerator EndGame()
