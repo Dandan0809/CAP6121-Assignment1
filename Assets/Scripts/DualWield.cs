@@ -11,6 +11,7 @@ public class DualWield : MonoBehaviour
     public GameObject[] abilities;
     public PlayerHealth player;
 
+    public GameObject[] forceBlasts;
     public void UnleashForce()
     {
         secondSaber.enabled = true;
@@ -20,6 +21,9 @@ public class DualWield : MonoBehaviour
         {
             obj.SetActive(false);
         }
+
+        foreach (GameObject obj in forceBlasts)
+        { obj.SetActive(true); }
         StartCoroutine(Regenerate());
     }
 

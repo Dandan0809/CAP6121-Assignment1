@@ -40,6 +40,8 @@ public class WaveManager : MonoBehaviour
     {
         if (hasFoughtBoss)
         {
+            if (currentEnemiesLeftCount != 0)
+                return;
             waveIncomingText.GetComponent<TMP_Text>().text = "Victory!";
             waveIncomingText.SetActive(true);
             StartCoroutine(EndGame());
@@ -53,7 +55,6 @@ public class WaveManager : MonoBehaviour
             currentWave++;
             if (currentWave >= enemyWaves.Length)
             {
-                Debug.Log("HERE");
                 StartCoroutine(BossSpawn());
                 hasFoughtBoss = true;
                 return;
@@ -114,6 +115,13 @@ public class WaveManager : MonoBehaviour
         waveIncomingText.SetActive(false);
 
         ForceAbility.SetActive(true);
+        currentEnemiesLeftCount = 6;
+        for (int i = 0; i < 5; i++)
+        {
+            float x = Random.Range(0f, 1f); // Random value between 0 and 1
+            Instantiate(enemyPrefab, Vector3.Lerp(point1.position, point2.position, x), Quaternion.identity);
+        }
+
         float t = Random.Range(0f, 1f); // Random value between 0 and 1
         Instantiate(bossPrefab, Vector3.Lerp(point1.position, point2.position, t), Quaternion.identity);
     }
