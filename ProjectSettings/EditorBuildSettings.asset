@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TrainingScene.unity
     guid: 1975be8b82319f846a8e23e20cfa4389
+  - enabled: 1
+    path: Assets/Scenes/AttackScene.unity
+    guid: d9e2641aaa11d364daa68afcfcc23a1f
   m_configObjects:
     com.unity.xr.management.loader_settings: {fileID: 11400000, guid: a65b8a9ee52b3495a9775a50976b6bcc,
       type: 2}
