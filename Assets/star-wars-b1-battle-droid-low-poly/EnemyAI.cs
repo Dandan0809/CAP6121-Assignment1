@@ -208,6 +208,10 @@ public class EnemyAI : MonoBehaviour
         if (waveManager != null)
         {
             waveManager.DecreaseEnemyCount();
+            if (isBoss)
+            {
+                waveManager.DestroyBoss();
+            }
         }
     }
 }

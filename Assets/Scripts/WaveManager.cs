@@ -144,4 +144,12 @@ public class WaveManager : MonoBehaviour
         waveIncomingText.SetActive(true);
         StartCoroutine(EndGame());
     }
+
+    public void DestroyBoss()
+    {
+        waveIncomingText.GetComponent<TMP_Text>().text = "Victory!";
+        waveIncomingText.SetActive(true);
+        StartCoroutine(EndGame());
+        return;
+    }
 }
