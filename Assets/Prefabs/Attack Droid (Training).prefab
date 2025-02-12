@@ -616,6 +616,8 @@ MonoBehaviour:
   moveRadius: 3
   turnSpeed: 2
   audioS: {fileID: 0}
+  SaberDeflect: {fileID: 3907391886281185018, guid: 2685d771ed9f65543b3e296d984e7d20,
+    type: 3}
 --- !u!65 &7302089950837200904
 BoxCollider:
   m_ObjectHideFlags: 0

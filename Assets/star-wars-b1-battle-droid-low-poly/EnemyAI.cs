@@ -163,6 +163,7 @@ public class EnemyAI : MonoBehaviour
         audioS.Play();
 
         SaberDeflect.shotCount++;
+        //Debug.Log("shotCount from droid: " + SaberDeflect.shotCount);
     }
 
     // Training Mode functions.
