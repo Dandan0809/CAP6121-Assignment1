@@ -66,6 +66,7 @@ public class TimerButton : MonoBehaviour
         if (saberDeflect != null)
         {
             saberDeflect.deflectCount = 0;
+            saberDeflect.shotCount = 0;
             saberDeflect.UpdateDeflectUI();
         }
 

@@ -1,5 +1,5 @@
 using UnityEngine;
-using TMPro; // Import TextMeshPro
+using TMPro; 
 
 public class SaberDeflect : MonoBehaviour
 {
@@ -7,7 +7,9 @@ public class SaberDeflect : MonoBehaviour
     public AudioSource deflectSound; 
     public int deflectCount = 0;
     public TextMeshProUGUI deflectText;
+    //public TextMeshProUGUI missText;
     public int shotCount = 0;
+    //private int missCount = 0;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -25,6 +27,9 @@ public class SaberDeflect : MonoBehaviour
             //increase deflect count
             deflectCount++;
             //Debug.Log("Beam Deflected! Total Deflects: " + deflectCount);
+            //missCount = shotCount - deflectCount;
+            //Debug.Log("shotCount: " + shotCount);
+            //Debug.Log("Misses: " + missCount);
 
             UpdateDeflectUI();
 
@@ -44,6 +49,9 @@ public class SaberDeflect : MonoBehaviour
         if (deflectText != null)
         {
             deflectText.text = "Deflects: " + deflectCount;
+            //Debug.Log("shotCount: " + shotCount);
+            //missCount = shotCount - deflectCount;
+            //missText.text = "Misses: " + missCount;
         }
         else
         {
